@@ -1,0 +1,62 @@
+//problem https://www.codechef.com/ALPAST01/problems/SMCMP
+
+#include <bits/stdc++.h>
+using namespace std;
+int parent[100001];
+int r[100001]; // r--->rank
+ void make_set() {
+
+	 for (int i = 0; i < 100001; i++)parent[i] = i;
+	 for (int i = 0; i < 100001; i++)r[i] = 0;
+}
+ int find_parent(int u) {
+	 if (u == parent[u])return u;
+	 else return parent[u] = find_parent(parent[u]);
+ }
+ void union_sets(int u, int v) {
+	 int par_u = find_parent(u);
+	 int par_v = find_parent(v);
+	 if ( par_u != par_v) {
+
+		 if (r[par_u] > r[par_v]) {
+			 parent[par_v] = par_u;
+		 }
+		 else
+		 {
+			 parent[par_u] = par_v;
+			 if (r[par_u] == r[par_v])r[par_v]++;
+		 }
+	 }
+}
+
+
+int  main()
+{
+	int n, q;
+	cin >> n >> q;
+	make_set();
+	while (q--) {
+		int a;
+		cin >> a;
+		if (a == 1) {
+			int u, v;
+			cin >> u >> v;
+			union_sets(u, v);
+		}
+		else
+		{
+			int u, v;
+			cin >> u >> v;
+			if (find_parent(u) == find_parent(v)) {
+				cout << "Yes" << endl;
+			}
+			else {
+				cout << "No" << endl;
+			}
+		}
+	}
+
+
+	
+}
+
