@@ -1,0 +1,50 @@
+//problem https://www.codechef.com/ALPAST01/problems/FASTROAD
+
+#include <bits/stdc++.h>
+using namespace std;
+vector<pair< long long, long double> >adj[100005];
+int  main()
+{
+	int tc;
+	cin >> tc;
+	while (tc--) {
+		for (int i = 0; i < 100005; i++)adj[i].clear();
+		long long N, M, u, v;
+		cin >> N >> M >> u >> v;
+		while (M--) {
+
+			long long x, y;
+			long double len, sp;
+			cin >> x >> y >> len >> sp;
+			adj[x].push_back({ y,len / sp });
+			adj[y].push_back({ x,len / sp });
+
+
+		}
+
+		priority_queue < pair<long double, long long>, vector < pair<long double, long long> >, greater<pair<long double, long long> > > pq;
+		vector<long double>dist(100005, LDBL_MAX);
+		pq.push({ 0,u });
+		dist[u] = 0;
+		vector<bool>extracted(100005, false);
+		while(!pq.empty()){
+
+			long long current = pq.top().second;
+			pq.pop();
+			extracted[current] = true;
+			for (int i = 0; i < adj[current].size(); i++) {
+				int current_adj = adj[current][i].first;
+				long double weight= adj[current][i].second;
+				if (extracted[v] == false && dist[current_adj] > dist[current] + weight) {
+					dist[current_adj] = dist[current] + weight;
+					pq.push({ dist[current_adj],current_adj });
+				}
+			}
+		}
+		if (dist[v] == LDBL_MAX)cout << -1 << endl;
+		else
+		cout << setprecision(5)<<fixed<<dist[v] << endl;
+	}
+	
+}
+
