@@ -16,7 +16,7 @@ using namespace std;
 #define s second
 #define mset(m,v) memset(m,v,sizeof(m))
 #define mod 1000000007
-const int N = 2e5 + 5;
+const int N = 1e6 + 5;
 #define PI acos(-1.0)
 long double EPS = 1e-9;
 typedef long long ll;
@@ -133,4 +133,5 @@ signed main()
 // print new line for each tc
 // check for int or ll
 // check if problem can be solved without any heavy DS like priority_queue or map
+
 
