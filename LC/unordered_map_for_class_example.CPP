@@ -1,5 +1,5 @@
 https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
-// stack overflow link
+// stack overflow link : https://stackoverflow.com/questions/38554083/how-can-i-use-a-c-unordered-set-for-a-custom-class
 
 class StepState{
     public:
