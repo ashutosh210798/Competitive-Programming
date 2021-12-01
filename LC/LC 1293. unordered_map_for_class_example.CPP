@@ -24,7 +24,7 @@ public:
     // hash values.
     size_t operator()(const StepState& p) const
     {
-        return (hash<int>()(phttps://github.com/ashutosh210798/Competitive-Programming.row+1)) * (hash<int>()(p.col+1))*(hash<int>()(p.k+1));
+        return (hash<int>()(row+1)) * (hash<int>()(p.col+1))*(hash<int>()(p.k+1));
     }
 };
 class Solution {
