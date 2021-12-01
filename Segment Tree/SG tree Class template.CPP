@@ -1,3 +1,4 @@
+// ref: https://github.com/striver79/Competitive_Codes-/blob/master/STsum_update.cpp
 class SGTree {
 	vector<int> seg;
 public:
